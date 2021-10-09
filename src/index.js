@@ -1,36 +1,46 @@
 import React from "react";
 import ReactDom from "react-dom";
 
-//stateless functional component
-//always return jsx
 
-// function Greeting(){
-//    return <h4>Lets finish component and complete course today in 6 hours</h4>;
-// }
 
-// const Greeting = () => {
-//    return React.createElement('h1', {}, 'hellow world');
-// }
+//Nested Components
+//css
+import './index.css'
 
-function Greeting() {
+function BookList() {
    return (
-      <>
-         <div onClick>
-            <h1>
-               hello work finish
-            </h1>
-            <ul>
-               <li>
-                  <a href='#'>Hellow world</a>
-               </li>
-               <img src='' alt='' />
-               <input type='text' name='' id=''/>
-            </ul>
-         </div>
-         <div></div>
-      </>
+      <section>
+         <Book/>
+          <Book/>
+           <Book/>
+            <Book/>
+             <Book/>
+              <Book/>
+               <Book/> 
+               <Book/>
+      </section>
+      
    );
 }
 
+const Book = () => {
+   return <article>
+      <Image></Image>
+      <Title/>
+      <Author/>
+   </article>
+}
 
-ReactDom.render(<Greeting />, document.getElementById('root'));
+const Image = () => {
+   return <img src= 'https://images-na.ssl-images-amazon.com/images/I/81kosCB1luL._AC_UL200_SR200,200_.jpg' alt=''/>
+}
+
+const Title = () => {
+   return  <h1> The Storyteller:Tales of Life and Music</h1>
+}
+
+const Author = () => {
+   return <h4>Dave Grohl</h4>
+
+}
+ReactDom.render(<BookList />, document.getElementById('root'));
