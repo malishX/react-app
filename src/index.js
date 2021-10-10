@@ -7,40 +7,49 @@ import ReactDom from "react-dom";
 //css
 import './index.css'
 
-//creating object
-   const firstBook = {
+//creating object array
+
+const books = [
+   {
          title :'The Storyteller:Tales of Life and Music',
          author :'Dave Grohl',
          img : 'https://images-na.ssl-images-amazon.com/images/I/81kosCB1luL._AC_UL200_SR200,200_.jpg' ,
-   }
-   const secondBook = {
+   },
+   {
          title :'And Away',
          author :'Richard Osman',
          img : 'https://images-eu.ssl-images-amazon.com/images/I/71yBZOvXBVL._AC_UL200_SR200,200_.jpg' ,
-   }
-   
+   },{
+         title :'Silverview: John Le CarréSilverview: John Le Carré',
+         author :'John le Carré',
+         img : 'https://images-eu.ssl-images-amazon.com/images/I/91NcJLzUc2L._AC_UL200_SR200,200_.jpg' ,
+   },
+
+];
+
+
+
 function BookList() {
    return (
       <section className='booklist'>
-         <Book img={firstBook.img} title={firstBook.title} author={firstBook.author}>
-         <p>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum vel quos repellendus perspiciatis voluptas dolores commodi delectus odit molestiae dolore adipisci id nesciunt repellat repudiandae nisi atque, magni dignissimos maxime.
-         </p>
-
-
-         </Book>
-         <Book img={secondBook.img} title={secondBook.title} author={secondBook.author}>
- 
-         </Book>
-         
-
+         {
+            books.map(
+               (book)=> {
+                  console.log(book)
+                  const {img, title, author } = book
+                  return (
+                     <Book book = {book}></Book>
+                  );
+               }
+            )
+         }
       </section>
       
    );
 }
 
 const Book = (props) => {
-   const {img, title, author, children} = props
+   const {img, title, author, children} = props.book
    return (<article className='book'>
       <img 
       src= {img}

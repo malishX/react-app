@@ -39,3 +39,7 @@ body {
   color: #617d98;
   font-size: 0.75rem;
 }
+
+.book p {
+  margin-top: 00.5rem;
+}
