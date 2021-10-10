@@ -11,15 +11,18 @@ import './index.css'
 
 const books = [
    {
+         id: 1,
          title :'The Storyteller:Tales of Life and Music',
          author :'Dave Grohl',
          img : 'https://images-na.ssl-images-amazon.com/images/I/81kosCB1luL._AC_UL200_SR200,200_.jpg' ,
    },
    {
+         id : 2,
          title :'And Away',
          author :'Richard Osman',
          img : 'https://images-eu.ssl-images-amazon.com/images/I/71yBZOvXBVL._AC_UL200_SR200,200_.jpg' ,
    },{
+         id: 3,
          title :'Silverview: John Le CarréSilverview: John Le Carré',
          author :'John le Carré',
          img : 'https://images-eu.ssl-images-amazon.com/images/I/91NcJLzUc2L._AC_UL200_SR200,200_.jpg' ,
@@ -35,10 +38,9 @@ function BookList() {
          {
             books.map(
                (book)=> {
-                  console.log(book)
-                  const {img, title, author } = book
+             
                   return (
-                     <Book book = {book}></Book>
+                     <Book key={book.id} {...book}></Book>
                   );
                }
             )
@@ -49,15 +51,28 @@ function BookList() {
 }
 
 const Book = (props) => {
-   const {img, title, author, children} = props.book
-   return (<article className='book'>
+   const {img, title, author} = props
+   const clickHandler = (e) => {
+      console.log(e.target)
+      alert('Hello world')
+
+   }
+
+   const complexExampele = (author) => {
+
+   }
+   return (<article className='book' onMouseOver={()=>{
+      console.log(title)
+
+   }}>
       <img 
       src= {img}
       alt=''
       />
-      <h1>{title}</h1>      
+      <h1 onClick={()=> console.log(title)}>{title}</h1>      
       <h4>{author}</h4>
-      {children}
+      <button type="button" onClick={clickHandler}>Examnple</button>
+      <button type="button" onClick={() =>complexExampele(author)}>more complex</button>
    </article>
    );
 };
